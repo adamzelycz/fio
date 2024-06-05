@@ -4,6 +4,7 @@ namespace h4kuna\Fio\Pay;
 
 use h4kuna\Fio\Account\FioAccount;
 use h4kuna\Fio\Exceptions\InvalidState;
+use Stringable;
 use XMLWriter;
 
 class XMLFile
@@ -68,9 +69,9 @@ class XMLFile
 				$value = $value->getAccount();
 			}
 
-			assert(is_scalar($value));
+			assert(is_scalar($value) || $value instanceof Stringable);
 			$this->xml->startElement($node);
-			$this->xml->text(strval($value));
+			$this->xml->text((string) $value);
 			$this->xml->endElement();
 		}
 		$this->xml->endElement();

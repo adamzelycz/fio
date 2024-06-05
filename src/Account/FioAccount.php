@@ -33,7 +33,7 @@ class FioAccount implements Stringable
 	}
 
 
-	public function __toString()
+	public function __toString(): string
 	{
 		return $this->getAccount();
 	}
